@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 페이지 - 동탄역 롯데캐슬 독서동아리</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+        }
+        .back-to-home {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.5rem 1rem;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .back-to-home:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">동탄역 롯데캐슬 독서동아리 관리자</div>
+            <ul>
+                <li><a href="index.html">홈으로</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="admin-controls">
+            <div class="admin-buttons">
+                <button class="admin-btn active" id="bookManagementBtn">도서 관리</button>
+                <button class="admin-btn" id="inquiryBtn">문의사항</button>
+                <button class="admin-btn" id="memberListBtn">회원목록</button>
+                <button class="admin-btn" id="infoBtn">정보</button>
+            </div>
+        </section>
+
+        <section id="bookManagement" class="admin-section">
+            <h2>도서 관리</h2>
+            <form id="bookForm">
+                <div class="form-group">
+                    <label for="bookTitle">도서 제목</label>
+                    <input type="text" id="bookTitle" name="bookTitle" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookAuthor">저자</label>
+                    <input type="text" id="bookAuthor" name="bookAuthor" required>
+                </div>
+                <div class="form-group">
+                    <label for="bookKyoboLink">교보문고 링크</label>
+                    <input type="url" id="bookKyoboLink" name="bookKyoboLink" required placeholder="https://www.kyobobook.co.kr/product/detailViewKor.laf?ejkGb=KOR&mallGb=KOR&barcode=...">
+                </div>
+                <div class="form-group">
+                    <label for="bookImage">도서 이미지</label>
+                    <input type="file" id="bookImage" name="bookImage" accept="image/*" required>
+                    <img id="imagePreview" style="display: none; max-width: 200px; margin-top: 10px;">
+                </div>
+                <button type="submit" id="submitButton">도서 추가</button>
+            </form>
+
+            <div class="book-list">
+                <h3>현재 도서 목록</h3>
+                <div id="currentBooks"></div>
+            </div>
+        </section>
+
+        <section id="inquirySection" class="admin-section" style="display: none;">
+            <h2>문의사항</h2>
+            <div class="inquiry-list">
+                <!-- 문의사항 목록이 여기에 표시됩니다 -->
+            </div>
+        </section>
+
+        <section id="memberListSection" class="admin-section" style="display: none;">
+            <h2>회원 관리</h2>
+            
+            <div class="member-management">
+                <div class="pending-members">
+                    <h3>가입 신청 목록</h3>
+                    <div class="member-list">
+                        <div class="member-list-header">
+                            <div class="member-info">이름</div>
+                            <div class="member-info">전화번호</div>
+                            <div class="member-info">나이</div>
+                            <div class="member-info">가입일</div>
+                            <div class="member-actions">관리</div>
+                        </div>
+                        <div id="pendingMemberList"></div>
+                    </div>
+                </div>
+
+                <div class="approved-members">
+                    <h3>회원 목록</h3>
+                    <div class="member-list">
+                        <div class="member-list-header">
+                            <div class="member-info">이름</div>
+                            <div class="member-info">전화번호</div>
+                            <div class="member-info">나이</div>
+                            <div class="member-info">가입일</div>
+                            <div class="member-actions">관리</div>
+                        </div>
+                        <div id="approvedMemberList"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="infoSection" class="admin-section" style="display: none;">
+            <h2>정보</h2>
+            <div class="info-content">
+                <!-- 정보 내용이 여기에 표시됩니다 -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 동탄역 롯데캐슬 독서동아리. All rights reserved.</p>
+    </footer>
+
+    <script src="admin.js"></script>
+</body>
+</html> 
